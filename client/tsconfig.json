@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "sourceMap": true,
+
+    // enables typescript to parse react syntax
+    "jsx": "react",
+
+    // enables functions such as Object.entries
+    "lib": ["es2018", "es6", "dom"],
+    "moduleResolution": "node",
+
+    // needed to recognize import keyword
+    "esModuleInterop": true,
+
+    // allow imports without *
+    "allowSyntheticDefaultImports": true,
+
+    // needed for "paths" option to work
+    "baseUrl": ".",
+
+    // alias long file imports
+    "paths": {
+      "@settings": ["./settings"],
+      "@config": ["./app/config"],
+      "@seeds": ["./app/seeds"],
+      "@mocks": ["./mock-data"],
+      "@api": ["./app/api"],
+      "@queries": ["./app/queries/queries"],
+      "@common/*": ["./app/components/common/*"],
+      "@components/*": ["./app/components/*"],
+      "@components": ["./app/components"],
+      "@actions/*": ["./app/actions/*"],
+      "@reducers": ["./app/Redux/Reducers"],
+      "@reducers/*": ["./app/Redux/Reducers/*"],
+      "@constants/*": ["./app/constants/*"],
+      "@pages/*": ["./app/components/pages/*"],
+      "@routes": ["./app/routers/Routes"],
+      "@helpers": ["app/helpers"],
+      "@helpers/*": ["app/helpers/*"],
+      "@types": ["./app/types"],
+      "@types/*": ["./app/types/*"]
+    }
+  },
+  "exclude": ["node_modules"]
+}

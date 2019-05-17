@@ -1,0 +1,132 @@
+// ! clean up this file
+
+// set box sizing to border box for all elements
+*
+  box-sizing: border-box
+
+html
+  display: grid
+  height: 100vh
+
+// font defaults
+h2
+  font: bold 2rem Heebo, sans-serif
+
+  // font: bold 2rem 'Titillium Web', sans-serif
+  color: $dark-grey
+
+p, button, input
+  font: 1.2rem Heebo, sans-serif
+  color: $dark-grey
+
+// enable more refined text rendering
+body
+  text-rendering: optimizeLegibility
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  font-family: sans-serif
+  margin: 0
+
+button
+  cursor: pointer
+
+button:disabled
+  cursor: default
+
+// convert all hr to hr-grey and remove background color
+hr
+  height: 1px
+  border: none
+  background-color: lightgrey
+
+.hr-grey
+  background-color: lightgrey
+
+.hr-blue
+  height: 4px
+  margin: 0
+  background-color: $dark-blue
+
+// top-level progress bar
+.Loading__bar___21yOt
+  // top: 55px !important
+  // display: block
+  position: -webkit-sticky !important
+  position: fixed !important
+
+  // position: sticky !important
+  z-index: 10000 !important
+
+.link
+  margin: 0
+  border: 0
+  outline: none
+  background: none
+  color: $lochmara
+  text-decoration: none
+
+  &:hover
+    cursor: pointer
+    text-decoration: underline
+
+// question mark, (Rounded Up),
+.make-blue
+  color: $lochmara
+
+.make-red
+  color: $error-red
+
+.error
+  border: $error-red
+
+.question-mark
+  padding: 1px 5px
+  margin: (-6px) 0 0 6px
+  border: 2px solid $lochmara
+  border-radius: 50%
+  color: $lochmara
+
+// ! DELETE ONCE INTEGRATED WITH APRICOT
+textarea
+  outline: none
+  resize: none
+  border-color: $light-grey
+  background-color: $snow
+  transition: 200ms ease-in-out
+
+  &:hover
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1)
+
+// ! MAY NEED TO DELETE ONCE INTEGRATED WITH APRICOT
+// manage fees modal buttons
+.grey-add-button, .grey-edit-button
+  display: grid
+  align-items: center
+  justify-items: center
+  padding: 15px 30px
+  margin-right: 15px
+  border: none
+  outline: none
+  text-decoration: none
+  font-weight: 600
+  font-family: 'roboto slab', sans-serif
+  color: $dark-grey
+  background-color: $light-grey
+
+  &:hover
+    cursor: pointer
+
+// ! MAY NEED TO DELETE ONCE INTEGRATED WITH APRICOT
+// table of grade adjustments modal
+.yellow-input-box
+  height: 32px
+  padding: 15px 10px
+  margin: 10px 0
+  box-sizing: border-box
+  border: 1px solid lightgrey
+  color: grey
+  background-color: $snow
+  transition: 200ms ease-in-out
+
+  &:hover
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1)

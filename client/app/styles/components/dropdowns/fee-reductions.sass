@@ -1,0 +1,82 @@
+.cb-table-action-bar .cb-table-action-bar-actions
+  display: grid
+  align-items: center
+
+  // <Dropdown /> component
+  .dropdown
+    justify-self: center
+    width: max-content
+
+    // <DropdownToggle /> component
+    .dropdown-toggle
+      position: relative
+      width: 130px
+      text-decoration: none
+      border: none
+      outline: none
+      color: $dark-grey
+      transition: all 0s
+
+      .cb-glyph
+        margin-left: 5px
+
+      &:hover
+        color: $curelean
+
+      &:hover::before
+        content: ''
+        bottom: 0
+        position: absolute
+        height: 3px
+        width: 100%
+        background-color: $curelean
+
+      &:focus
+        outline: none
+
+      &:active
+        outline: none
+
+    // <DropdownMenu /> component
+    .dropdown-menu
+      display: grid
+      justify-content: center
+      margin: (-5px) auto 0
+      filter: drop-shadow(0 3px 3px $shadow)
+      pointer-events: none
+      opacity: 0
+      z-index: 1000
+
+    .dropdown-menu.show
+      pointer-events: all
+      opacity: 1
+
+      // <DropdownItem /> component
+      .dropdown-item
+        display: grid
+        position: relative
+        width: 100%
+        padding: 5px 20px
+        text-align: left
+        border: none
+        outline: none
+        background: none
+        white-space: nowrap
+        transition: all 200ms
+
+        &:first-of-type
+          margin-top: 5px
+
+        &:last-of-type
+          margin-bottom: 5px
+
+        &:hover
+          color: $curelean
+
+        &:hover::before
+          content: ''
+          left: 0
+          position: absolute
+          height: 25px
+          width: 3px
+          background-color: $curelean

@@ -1,0 +1,46 @@
+
+.acl-menu
+  display: grid
+  position: fixed
+  grid-template-columns: repeat(3, max-content)
+  grid-column-gap: 35px
+  width: max-content
+  z-index: 1000
+
+  .fas
+    opacity: .4
+    transition: all .2s ease-in-out
+
+    &:hover
+      cursor: pointer
+      opacity: 1
+
+  .su-active
+    opacity: .7
+    color: $lochmara
+
+  .du-active
+    opacity: .7
+    color: #702f8a
+
+  .pa-active
+    opacity: .7
+    color: #e57200
+
+
+.acl-menu-top-left
+  left: 135px
+  top: 55px
+
+.acl-menu-top-right
+  right: 40px
+  top: 55px
+
+.acl-menu-bottom-left
+  left: 135px
+  bottom: 50px
+
+.acl-menu-bottom-right
+  right: 40px
+  bottom: 50px
+

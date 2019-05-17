@@ -1,0 +1,118 @@
+$lobby-height: 85vh
+
+.dashboard
+  display: grid
+  grid-template-columns: 1fr 3fr 1fr
+  grid-template-rows: $lobby-height max-content
+  grid-column-gap: 30px
+  padding: 15px
+  height: 100vh
+
+  .users-panel
+    grid-row: 1
+    background-color: $white-grey
+
+    .users-list
+      padding: 0
+      list-style-type: none
+
+      li
+        padding: 0 20px
+        transition: 0.3s all ease-in-out
+
+        &:hover
+          cursor: pointer
+          background-color: $light-grey
+
+        .user-heading
+          display: grid
+          grid-template-columns: repeat(2, max-content)
+          grid-column-gap: 15px
+          align-items: center
+
+          .profile-image
+            height: 30px
+            width: 30px
+            border-radius: 50%
+            background-color: $lochmara
+
+  .main
+    display: grid
+    grid-row: 1 / 3
+    grid-template-rows: 78vh max-content
+
+    .lobby
+      display: grid
+      grid-row-gap: 30px
+      grid-auto-rows: max-content
+      border-radius: 15px 15px 0 0
+      display: grid
+      grid-row-gap: 35px
+      padding: 0 15px
+      height: max-content
+      max-height: 78vh
+      overflow: hidden
+      overflow-y: scroll
+
+    .user-block
+      display: grid
+      grid-template-columns: max-content 1fr
+      grid-column-gap: 25px
+      align-items: center
+
+      .user-image
+        grid-column: 1
+        height: 50px
+        width: 50px
+        border-radius: 50%
+        background-color: red
+        background-image: url(https://source.unsplash.com/random) no-repeat cover
+
+      .user-message
+        display: grid
+        position: relative
+        grid-column: 2
+        grid-row-gap: 10px
+        padding: 20px 25px
+        border-radius: 5px
+        background-color: $white-grey
+
+        p
+          margin: 0
+
+        .username
+          font-family: 'rubik'
+
+        .message
+          font-family: 'karla'
+
+        .timestamp
+          position: absolute
+          top: 10px
+          right: 15px
+          color: $grey
+
+    .chat-box
+      display: grid
+      grid-template-columns: 8fr 2fr
+      grid-column-gap: 20px
+      padding: 30px 15px 0
+      margin-top: 30px
+
+      .input-box
+        height: 50px
+        padding: 15px 25px
+        outline: none
+        border: none
+        border-radius: 5px
+        background-color: $white-grey
+
+      .submit-button
+        outline: none
+        border: none
+        border-radius: 5px
+        color: $white
+        background-color: $lochmara
+
+  .power-ups
+    background-color: $white-grey

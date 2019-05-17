@@ -1,0 +1,101 @@
+.select-school-page
+  display: grid
+  width: max-content
+  max-width: 90vw
+  padding-bottom: 30px
+
+  // body below the ssm-form (header with inputs)
+  main
+    margin-top: 15px
+
+  .ssm-form
+    display: grid
+    grid-template-columns: 1fr 1fr
+    grid-column-gap: 25px
+    align-items: center
+
+    .select-state, .search-school, .search-city, .search-zip
+      width: max-content
+
+    @media (min-width: $screen-lg-min)
+      grid-template-columns: repeat(5, max-content)
+
+      // APRICOT OVERRIDE
+      .form-group
+        display: grid
+        justify-items: start
+        grid-row-gap: 10px
+
+        .select-state, .search-school
+          width: 200px
+
+        .search-city, .search-zip
+          width: 150px
+
+    .button-group
+      display: grid
+      grid-template-columns: max-content
+      align-items: center
+      justify-self: end
+      height: 100%
+      grid-column: 2
+
+      @media (min-width: $screen-lg-min)
+        grid-column: 5
+
+  .school-results-list
+    display: grid
+    grid-row-gap: 15px
+    max-height: 420px
+    overflow-y: scroll
+
+    &::-webkit-scrollbar
+      width: 10px
+
+    &::-webkit-scrollbar-thumb
+      height: 30%
+      background-color: $light-grey
+
+    &::-webkit-scrollbar-track
+      background: $table-grey
+
+    .school-result
+      display: grid
+      grid-template-columns: max-content 1fr 1fr max-content
+      grid-template-rows: repeat(max-content)
+      grid-column-gap: 15px
+      grid-row-gap: 5px
+      align-items: center
+      padding: 20px
+      background-color: $table-grey
+
+      .school-name, .school-aicode, .school-address
+        margin: 0
+
+      .school-name
+        grid-column: 1
+        grid-row: 1
+
+      .school-aicode
+        grid-column: 2
+        grid-row: 1
+        height: max-content
+        width: max-content
+        padding: 2px 8px
+        border-radius: 25px
+        letter-spacing: 0.5px
+        font: 500 14px roboto, sans-serif
+        color: $white
+        background-color: $lochmara
+
+      .school-address
+        grid-column: (1 / span) 2
+        grid-row: 2
+
+      .add-school
+        grid-column: 4
+        grid-row: (1 / span) 2
+
+      // .school-info
+      //   grid-column: 1 / span 2
+      //   grid-row: 1 / 3
