@@ -164,11 +164,15 @@ Resources:
             pre_build:
               commands:
                 - cd ./client
+                - echo SHOULD NOW BE IN THE CLIENT FOLDER!
+                - pwd
                 - echo Installing source NPM dependencies...
                 - npm install
             build:
               commands:
                 - cd ./client
+                - echo PACKAGES INSTALLED. NOW IN...
+                - pwd
                 - echo Build started on `date`
                 - npm run build
             post_build:
