@@ -163,12 +163,13 @@ Resources:
           phases:
             pre_build:
               commands:
-                - cd ./client
-                - echo SHOULD NOW BE IN THE CLIENT FOLDER!
-                - pwd
+                - echo CURRENT DIR...
                 - ls -a
-                - echo \033[45m HI THERE 1!
-                - echo \033[45mHI THERE 2!
+                - echo CD TO CLIENT...
+                - cd ./client
+                - echo NOW IN...
+                - ls -a
+                - echo ATTEMPTING INSTALL...
                 - echo Installing source NPM dependencies...
                 - npm install
             build:
