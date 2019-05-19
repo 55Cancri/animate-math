@@ -172,6 +172,7 @@ Resources:
                 - cd ./client && npm run build
             post_build:
               commands:
+                - cd ./client && ls - a
                 - cd ./client && aws s3 cp --recursive --acl public-read ./dist s3://${DeployBucket}/ 
                 - cd ./client && aws s3 cp --acl public-read --cache-control="max-age=0, no-cache, no-store, must-revalidate" ./dist/service-worker.js s3://${DeployBucket}/
                 - cd ./client && aws s3 cp --acl public-read --cache-control="max-age=0, no-cache, no-store, must-revalidate" ./dist/index.html s3://${DeployBucket}/

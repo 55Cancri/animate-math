@@ -231,13 +231,7 @@ const config: Configuration = {
     // 1. import dotenv
     // 2. dotenv.config() immediately after
     // 3. this line adds environment variables to the bundle
-    new webpack.EnvironmentPlugin([
-      "NODE_SETTING",
-      "CONSUMER_KEY",
-      "CONSUMER_SECRET",
-      "ACCESS_TOKEN_KEY",
-      "ACCESS_TOKEN_SECRET"
-    ]),
+    new webpack.EnvironmentPlugin(["NODE_SETTING"]),
 
     // enables hmr for css changes
     new ExtractCssChunks({ filename: "css/style.css" }),
