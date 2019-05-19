@@ -164,6 +164,8 @@ Resources:
             pre_build:
               commands:
                 - cd ./client && ls -a
+                - echo Installing typescript globally...
+                - cd .client && npm install -g typescript
                 - echo Installing source NPM dependencies...
                 - cd ./client && npm install
             build:
