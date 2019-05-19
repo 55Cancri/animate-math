@@ -163,25 +163,25 @@ Resources:
           phases:
             pre_build:
               commands:
-                - echo CURRENT DIR...
+                - echo BEFORE...
                 - ls -a
                 - echo CD TO CLIENT...
-                - cd ./client
-                - echo NOW IN...
+                - cd client
+                - echo AFTER...
                 - ls -a
                 - echo ATTEMPTING INSTALL...
                 - echo Installing source NPM dependencies...
                 - npm install
             build:
               commands:
-                - cd ./client
+                - cd client
                 - echo PACKAGES INSTALLED. NOW IN...
                 - pwd
                 - echo Build started on `date`
                 - npm run build
             post_build:
               commands:
-                - cd ./client
+                - cd client
                 - aws s3 cp --recursive --acl public-read ./dist s3://${DeployBucket}/ 
                 - aws s3 cp --acl public-read --cache-control="max-age=0, no-cache, no-store, must-revalidate" ./dist/service-worker.js s3://${DeployBucket}/
                 - aws s3 cp --acl public-read --cache-control="max-age=0, no-cache, no-store, must-revalidate" ./dist/index.html s3://${DeployBucket}/
@@ -189,7 +189,7 @@ Resources:
           artifacts:
             files:
               - '**/*'
-            base-directory: ./client/dist
+            base-directory: client/dist
   PipelineBucket: 
     Type: 'AWS::S3::Bucket'
     Properties: {}
