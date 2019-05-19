@@ -20,6 +20,8 @@ const baseUrl = {
   willow: "https://dc3xrndm1g.execute-api.us-east-1.amazonaws.com/willow"
 };
 
+console.log("how bout now.");
+
 export default {
   user: {
     login: credentials =>
