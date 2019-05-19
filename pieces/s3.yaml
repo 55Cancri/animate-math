@@ -1,0 +1,34 @@
+AWSTemplateFormatVersion: 2010-09-09
+Resources:
+  DeployBucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      # configure for static web hosting
+      WebsiteConfiguration:
+        IndexDocument: index.html
+  # configure single cloudfront distribution
+  Distribution:
+    Type: 'AWS::CloudFront::Distribution'
+    Properties:
+      DistributionConfig:
+        Origins:
+          - # use the DeployBucket as the cdn origin
+            DomainName: !GetAtt DeployBucket.DomainName
+            Id: !Ref DeployBucket
+            S3OriginConfig:
+              OriginAccessIdentity: ''
+        # you remember this one
+        DefaultRootObject: index.html
+        Enabled: true
+
+        # configure the caching behavior for the cdn here. Once assets are placed in the s3 bucket, cloudfront will automatically pull requested files from the bucket when they’re requested and cache the files in the cloudfront network. It is important to configure reasonable cache settings to avoid excessive data transfer between the s3 bucket and cloudfront since aws charges traffic between s3 and cloudfront.
+        DefaultCacheBehavior:
+          # 1 day
+          MinTTL: 86400
+          # 1 year
+          MaxTTL: 31536000
+          ForwardedValues:
+            QueryString: true
+          TargetOriginId: !Ref DeployBucket
+          # force https
+          ViewerProtocolPolicy: 'redirect-to-https'

@@ -1,0 +1,16 @@
+Parameters:
+  ProjectSource:
+    Type: String
+    Default: 'https://github.com/qswitcher/imgterest'
+    Description: 'Source control URL (e.g. Github)'
+  GithubOwner:
+    Type: String
+    Default: qswitcher
+    Description: 'Github repo owner'
+  GithubRepo:
+    Type: String
+    Default: my-test-app
+    Description: 'Github repo name'
+  GithubOAuthToken:
+    Type: String
+    Description: 'Github personal access token'

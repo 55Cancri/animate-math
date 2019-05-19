@@ -1,0 +1,79 @@
+# code pipeline declaration
+CodePipeline:
+  Type: 'AWS::CodePipeline::Pipeline'
+  Properties:
+    RoleArn: !GetAtt CodePipeLineRole.Arn
+    ArtifactStore:
+      Location: !Ref PipelineBucket
+      Type: S3
+    Stages:
+      # takes github configuration, performs checkouts of the source files, and then stores them in the pipeline bucket
+      - Name: Source
+        Actions:
+          - Name: SourceAction
+            ActionTypeId:
+              Category: Source
+              Owner: ThirdParty
+              Provider: GitHub
+              Version: 1
+            OutputArtifacts:
+              - Name: MyApp
+            Configuration:
+              Owner: !Ref GithubOwner
+              Repo: !Ref GithubRepo
+              Branch: master
+              OAuthToken: !Ref GithubOAuthToken
+
+      # takes the sources files in the pipeline bucket and passes them to codebuild, then triggers the build
+      - Name: Build
+        Actions:
+          - Name: BuildAction
+            ActionTypeId:
+              Category: Build
+              Owner: AWS
+              Version: 1
+              Provider: CodeBuild
+            InputArtifacts:
+              - Name: MyApp
+            OutputArtifacts:
+              - Name: MyAppBuild
+            Configuration:
+              ProjectName: !Ref CodeBuild
+
+# iam role to give the pipeline the necessary permissions to start codebuild
+CodePipeLineRole:
+  Type: AWS::IAM::Role
+  Properties:
+    AssumeRolePolicyDocument:
+      Version: '2012-10-17'
+      Statement:
+        - Effect: Allow
+          Principal:
+            Service:
+              - 'codepipeline.amazonaws.com'
+          Action:
+            - 'sts:AssumeRole'
+    Policies:
+      - PolicyName: root
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - 's3:GetObject'
+                - 's3:GetObjectVersion'
+                - 's3:GetBucketVersioning'
+                - 's3:PutObject'
+              Resource:
+                - !GetAtt PipelineBucket.Arn
+                - !Join ['', [!GetAtt PipelineBucket.Arn, '/*']]
+            - Effect: Allow
+              Action:
+                - 'codebuild:BatchGetBuilds'
+                - 'codebuild:StartBuild'
+              Resource: '*'
+
+# temp bucket to hold artifacts at each stage of the pipeline
+PipelineBucket:
+  Type: 'AWS::S3::Bucket'
+  Properties: {}
