@@ -166,6 +166,9 @@ Resources:
                 - cd ./client
                 - echo SHOULD NOW BE IN THE CLIENT FOLDER!
                 - pwd
+                - ls -a
+                - echo \033[45m HI THERE 1!
+                - echo \033[45mHI THERE 2!
                 - echo Installing source NPM dependencies...
                 - npm install
             build:
